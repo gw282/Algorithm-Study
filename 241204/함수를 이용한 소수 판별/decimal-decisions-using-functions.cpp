@@ -20,7 +20,7 @@ int SumPrime(int a,int b) {
 int main() {
     int a,b;
     cin >> a >> b;
-
+    if(a == 1 && b == 1) return 0;
     cout << SumPrime(a,b);
     return 0;
 }
