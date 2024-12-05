@@ -18,7 +18,7 @@ string Seq(int a, int b) {
 
     for(int i=0;i<=B.size();i++) {
         if(A[i] == B[0]) {
-            if(check) return "Yes";
+            if(check(i)) return "Yes";
         }
     }
     return "No";
