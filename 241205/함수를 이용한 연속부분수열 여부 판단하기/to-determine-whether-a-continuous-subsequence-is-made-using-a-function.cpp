@@ -7,8 +7,9 @@ vector<int> B;
 
 bool check(int n) {
     for(int i=0;i<B.size();i++) {
-        if(A[i+n] == B[i]) continue;
-        return false;
+        if(A[i+n] != B[i]) {
+            return false;
+        }
     }
     return true;
 }
@@ -16,7 +17,7 @@ bool check(int n) {
 string Seq(int a, int b) {
     int num;
 
-    for(int i=0;i<=B.size();i++) {
+    for(int i=0;i<=a-b;i++) {
         if(A[i] == B[0]) {
             if(check(i)) return "Yes";
         }
