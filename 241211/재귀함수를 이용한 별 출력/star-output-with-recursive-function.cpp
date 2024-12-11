@@ -4,7 +4,7 @@ using namespace std;
 int n;
 
 void func(int m) {
-    if(m == n) return;
+    if(m > n) return;
     for(int i=0;i<m;i++) {
         cout << "*";
     }
