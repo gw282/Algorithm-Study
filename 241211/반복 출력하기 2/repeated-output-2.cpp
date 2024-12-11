@@ -2,7 +2,7 @@
 using namespace std;
 
 void func(int n) {
-    if(n == 1) return;
+    if(n == 0) return;
 
     while(n--) {
         cout << "HelloWorld" << '\n';
