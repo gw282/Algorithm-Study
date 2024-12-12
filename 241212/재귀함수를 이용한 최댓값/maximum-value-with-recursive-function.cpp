@@ -1,19 +1,22 @@
 #include <iostream>
+#include <algorithm>
 using namespace std;
 
-int func(int n, int m) {
-    if(n == 0) return m;
-    int num;
-    cin >> num;
-    if(num > m) return func(n-1, num);
-    return func(n-1, m);
+int arr[102];
+
+int func(int n) {
+    if(n == 0) return arr[0];
+    return max(func(n-1), arr[n]);
 }
 
 int main() {
-    int n, first;
-    cin >> n >> first;
+    int n;
+    cin >> n;
 
-    cout << func(n-1, first);
+    for(int i=0;i<n;i++) {
+        cin >> arr[i];
+    }
 
+    cout << func(n-1);
     return 0;
 }
