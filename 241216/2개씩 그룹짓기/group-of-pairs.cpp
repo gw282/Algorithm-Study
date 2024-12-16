@@ -13,13 +13,13 @@ int main() {
 
     sort(arr,arr+n);
 
-    int mx = 0;
+    int mn = arr[0] + arr[n-1];
 
-    for(int i=0;i<n/2;i++) {
+    for(int i=1;i<n/2-1;i++) {
         int num = arr[i] + arr[n-1-i];
-        mx = max(mx, num);
+        mn = min(mn, num);
     }
 
-    cout << mx;
+    cout << mn;
     return 0;
 }
