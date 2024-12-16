@@ -7,19 +7,19 @@ int main() {
     int n;
     cin >> n;
 
-    for(int i=0;i<n;i++) {
+    for(int i=0;i<n*2;i++) {
         cin >> arr[i];
     }
 
-    sort(arr,arr+n);
+    sort(arr,arr+n*2);
 
-    int mn = arr[0] + arr[n-1];
+    int mx = 0;
 
-    for(int i=1;i<n/2-1;i++) {
-        int num = arr[i] + arr[n-1-i];
-        mn = min(mn, num);
+    for(int i=0;i<n;i++) {
+        int num = arr[i] + arr[n*2-i-1];
+        mx = max(mx, num);
     }
 
-    cout << mn;
+    cout << mx;
     return 0;
 }
