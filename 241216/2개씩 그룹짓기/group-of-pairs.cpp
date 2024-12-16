@@ -2,7 +2,7 @@
 #include <algorithm>
 using namespace std;
 
-int arr[1002];
+int arr[2002];
 int main() {
     int n;
     cin >> n;
