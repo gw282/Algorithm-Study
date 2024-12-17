@@ -1,30 +1,41 @@
 #include <iostream>
+#include <vector>
 #include <string>
+#include <algorithm>
 using namespace std;
 
-class Product {
+class Person {
     public:
-        string name;  // 상품명
-        int code;     // 상품 코드
+        string name;
+        string address;
+        string city;
 
-        Product(string name, int code) {
+        Person(string name, string address, string city) {
             this->name = name;
-            this->code = code;
+            this->address = address;
+            this->city = city;
         }
 };
 
 int main() {
-    Product product1("codetree", 50);
+    int n;
+    cin >> n;
 
-    string name;
-    int code;
+    vector<Person> people;
 
-    cin >> name >> code;
+    for (int i = 0; i < n; i++) {
+        string name, address, city;
+        cin >> name >> address >> city;
+        people.push_back(Person(name, address, city));
+    }
 
-    Product product2(name, code);
+    sort(people.begin(), people.end(), [](const Person &a, const Person &b) {
+        return a.name > b.name;
+    });
 
-    cout << "product " << product1.code << " is " << product1.name << endl;
-    cout << "product " << product2.code << " is " << product2.name << endl;
+    cout << "name " << people[0].name << endl;
+    cout << "addr " << people[0].address << endl;
+    cout << "city " << people[0].city << endl;
 
     return 0;
 }
