@@ -1,7 +1,7 @@
 #include <iostream>
 #include <vector>
 #include <algorithm>
-#include <cmath>
+#include <iomanip> // 소수 출력용 헤더 추가
 
 using namespace std;
 
@@ -29,7 +29,6 @@ bool compareByHeight(const Student &a, const Student &b) {
 int main() {
     vector<Student> students;
 
-
     for(int i = 0; i < 5; i++) {
         string name;
         int height;
@@ -38,19 +37,23 @@ int main() {
         students.emplace_back(name, height, weight);
     }
 
-
+    // 이름 기준으로 정렬
     sort(students.begin(), students.end(), compareByName);
+
+    // 소수 첫째 자리 고정 출력 설정
+    cout << fixed << setprecision(1); 
 
     cout << "name" << endl;
     for(const auto& student : students) {
-        cout << student.name << " " << student.height << " " << roundf(student.weight*10) /10 << endl;
+        cout << student.name << " " << student.height << " " << student.weight << endl;
     }
 
+    // 키 기준으로 정렬
     sort(students.begin(), students.end(), compareByHeight);
 
     cout << "\nheight" << endl;
     for(const auto& student : students) {
-        cout << student.name << " " << student.height << " " << roundf(student.weight*10) /10 << endl;
+        cout << student.name << " " << student.height << " " << student.weight << endl;
     }
 
     return 0;
