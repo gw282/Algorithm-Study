@@ -22,8 +22,8 @@ int main() {
 
     sum += diff / 7;
     diff = diff % 7;
-    
-    for(int i=0;i<diff;i++) {
+
+    for(int i=1;i<=diff;i++) {
         if(day[i] == day_selected) sum +=1;
     }
     cout << sum;
