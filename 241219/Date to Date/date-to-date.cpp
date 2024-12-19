@@ -7,7 +7,7 @@ int main() {
 
     int day = 0;
     if(m1 == m2) {
-        day = d2- d1;
+        day = d2- d1 + 1;
     } else {
         if(m1 == 1 || m1 == 3 || m1 == 5 || m1 == 7 || m1 == 8 || m1 == 10 || m1 == 12) {
             day += (32 - d1 + d2);
