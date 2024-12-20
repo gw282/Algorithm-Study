@@ -2,7 +2,8 @@
 using namespace std;
 
 int main() {
-    int n = 29;
+    int n;
+    cin >> n;
     int digits[20] = {};
     int cnt = 0;
     
