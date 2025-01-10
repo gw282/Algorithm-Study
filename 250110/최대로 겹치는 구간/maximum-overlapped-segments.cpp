@@ -12,14 +12,14 @@ int main() {
     for (int i = 0; i < n; i++) {
         cin >> x1[i] >> x2[i];
 
-        for(int j=x1[i]+100;j<=x2[i]+100;j++) {
+        for(int j=x1[i]+100;j<x2[i]+100;j++) {
             res[j]++;
         }
     }
 
     int ans = 0;
 
-    for(int i=0;i<=200;i++) {
+    for(int i=0;i<=202;i++) {
         ans = max(ans, res[i]);
     }
 
