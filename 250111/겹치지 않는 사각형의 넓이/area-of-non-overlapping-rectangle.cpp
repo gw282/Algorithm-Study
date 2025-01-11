@@ -1,43 +1,58 @@
 #include <iostream>
+#include <vector>
+#include <algorithm>
 
 using namespace std;
 
-int x1[3], y1[3];
-int x2[3], y2[3];
-int board[2002][2002] = {0};
-
 int main() {
+    // 직사각형 A, B, M의 좌표 입력
+    int x1A, y1A, x2A, y2A;
+    int x1B, y1B, x2B, y2B;
+    int x1M, y1M, x2M, y2M;
+    
+    cin >> x1A >> y1A >> x2A >> y2A;
+    cin >> x1B >> y1B >> x2B >> y2B;
+    cin >> x1M >> y1M >> x2M >> y2M;
+    
+    // 격자 크기 2001 x 2001
+    vector<vector<int>> grid(2001, vector<int>(2001, 0));
 
-    cin >> x1[0] >> y1[0] >> x2[0] >> y2[0];
-    cin >> x1[1] >> y1[1] >> x2[1] >> y2[1];
-    cin >> x1[2] >> y1[2] >> x2[2] >> y2[2];
-
-    for (int i = x1[0]; i < x2[0]; i++) {
-        for (int j = y1[0]; j < y2[0]; j++) {
-            board[i + 100][j + 100] = 1;
+    // 직사각형 A를 표시 (1로 설정)
+    for (int i = x1A + 1000; i < x2A + 1000; i++) {
+        for (int j = y1A + 1000; j < y2A + 1000; j++) {
+            grid[i][j] = 1;
         }
     }
 
-    for (int i = x1[1]; i < x2[1]; i++) {
-        for (int j = y1[1]; j < y2[1]; j++) {
-            board[i + 100][j + 100] = 1;
+    // 직사각형 B를 표시 (1로 설정)
+    for (int i = x1B + 1000; i < x2B + 1000; i++) {
+        for (int j = y1B + 1000; j < y2B + 1000; j++) {
+            grid[i][j] = 1;
         }
     }
 
-    for (int i = x1[2]; i < x2[2]; i++) {
-        for (int j = y1[2]; j < y2[2]; j++) {
-            board[i + 100][j + 100] = 0;
+    // 직사각형 M을 덮을 부분을 0으로 설정
+    for (int i = x1M + 1000; i < x2M + 1000; i++) {
+        for (int j = y1M + 1000; j < y2M + 1000; j++) {
+            grid[i][j] = 0;
         }
     }
 
-    int ans = 0;
-    for (int i = 0; i < 2002; i++) {
-        for (int j = 0; j < 2002; j++) {
-            if (board[i][j] == 1) ans++;
+    // 직사각형 A, B의 넓이 계산 (겹치지 않는 부분)
+    int areaA = (x2A - x1A) * (y2A - y1A);
+    int areaB = (x2B - x1B) * (y2B - y1B);
+    int result = 0;
+
+    // A와 B에서 M으로 덮이지 않은 부분을 세기
+    for (int i = 0; i < 2001; i++) {
+        for (int j = 0; j < 2001; j++) {
+            if (grid[i][j] == 1) {
+                result++;
+            }
         }
     }
 
-    cout << ans;
-
+    cout << result << endl;
+    
     return 0;
 }
