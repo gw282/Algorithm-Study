@@ -13,11 +13,14 @@ int main() {
 
     int cnt = 1, ans = 0;
     for(int i=0;i<N;i++) {
-        if(i==0 || arr[i] != arr[i-1]) {
+        if(i==0) continue;
+        else if(arr[i] != arr[i-1]) {
             ans = max(cnt, ans);
             cnt = 1;
         } else cnt++;
     }
+    
+    ans = max(cnt, ans);
 
     cout << ans;
     return 0;
