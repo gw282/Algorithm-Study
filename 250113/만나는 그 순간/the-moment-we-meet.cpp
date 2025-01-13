@@ -1,4 +1,5 @@
 #include <iostream>
+#include <algorithm>
 
 using namespace std;
 
@@ -8,12 +9,13 @@ int t[1000];
 char d2[1000];
 int t2[1000];
 
-int locA[1002];
-int locB[1002];
+int locA[2000];
+int locB[2000];
 
 int A = 0, B = 0, ans = -1;
 int sumA = 0;
 int sumB = 0;
+
 int main() {
     cin >> n >> m;
 
@@ -27,51 +29,52 @@ int main() {
         sumB += t2[i];
     }
 
-    int mx = max(sumA, sumB);
-    
+    locA[0] = 0;
+    locB[0] = 0;
 
-    int cnt = 0, time = 0;
-    for(int i=0;i<n;i++) {
-        cnt = t[i];
-        while(cnt--) {
-            time = time + 1;
+    // A의 위치 추적
+    int time = 0;
+    for(int i = 0; i < n; i++) {
+        for(int j = 0; j < t[i]; j++) {
+            time++;
             if(d[i] == 'L') {
-                locA[time] = locA[time-1] -1;
+                locA[time] = locA[time-1] - 1;
             } else {
-                locA[time] = locA[time-1] +1;
+                locA[time] = locA[time-1] + 1;
             }
         }
     }
 
-    cnt = 0, time = 0;
-    for(int i=0;i<m;i++) {
-        cnt = t2[i];
-        while(cnt--) {
-            time = time + 1;
+    // B의 위치 추적
+    time = 0;
+    for(int i = 0; i < m; i++) {
+        for(int j = 0; j < t2[i]; j++) {
+            time++;
             if(d2[i] == 'L') {
-                locB[time] = locB[time-1] -1;
+                locB[time] = locB[time-1] - 1;
             } else {
-                locB[time] = locB[time-1] +1;
+                locB[time] = locB[time-1] + 1;
             }
         }
     }
 
-    if(sumA < sumB) {
-        for(int i=sumA+1;i<=sumB;i++) {
-            locA[i] = locA[sumA];
-        }
-    } else {
-        for(int i=sumB+1;i<=sumA;i++) {
-            locB[i] = locA[sumB];
+    int maxTime = max(sumA, sumB);
+    for(int i = sumA + 1; i <= maxTime; i++) {
+        locA[i] = locA[sumA];
+    }
+
+    for(int i = sumB + 1; i <= maxTime; i++) {
+        locB[i] = locB[sumB];
+    }
+
+    for(int i = 1; i <= maxTime; i++) {
+        if(locA[i] == locB[i]) {
+            ans = i;
+            break;
         }
     }
 
-    for(int i=1;i<=mx;i++) {
-        if(locA[i] == locB[i]) {
-            ans = i; break;
-        }
-    }
-    cout << ans;
+    cout << ans << endl;
     
     return 0;
 }
