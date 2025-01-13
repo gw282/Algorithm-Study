@@ -1,8 +1,8 @@
 #include <iostream>
 using namespace std;
 
-int locA[1002];
-int locB[1002];
+long long locA[1002];
+long long locB[1002];
 
 int n, m;
 int v, t;
