@@ -9,8 +9,8 @@ int t[1000];
 char d2[1000];
 int t2[1000];
 
-int locA[2000];
-int locB[2000];
+int locA[2000002];
+int locB[2000002];
 
 int A = 0, B = 0, ans = -1;
 int sumA = 0;
