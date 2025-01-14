@@ -31,19 +31,19 @@ int main() {
 
     for(int i=1;i<=mx;i++) {
         if(A[i] > B[i]) {
-            if(ord !=1 || ord == 0) {
+            if(ord !=1) {
                 ans++;
                 ord = 1;
             }
         }
         else if(A[i] == B[i]) {
-            if(ord !=2 || ord == 0) {
+            if(ord !=2) {
                 ans++; 
                 ord = 2;
             }
         }
         else if(A[i] < B[i]) {
-            if(ord !=3 || ord == 0) {
+            if(ord !=3) {
                 ans++;
                 ord = 3;
             }
