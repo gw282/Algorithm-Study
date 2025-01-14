@@ -3,7 +3,7 @@ using namespace std;
 
 int n, m, v, t;
 int sumA = 0, sumB = 0, mx = 0, ord = 0, ans = 0;
-int A[1002], B[1002];
+int A[1000002], B[1000002];
 
 int main() {
     cin >> n >> m;
