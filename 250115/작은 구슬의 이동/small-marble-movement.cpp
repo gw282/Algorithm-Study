@@ -6,7 +6,7 @@ int y, x;
 char dir;
 int d;
 
-int dy[4] = {1,0,-1,0};
+int dy[4] = {-1,0,1,0};
 int dx[4] = {0,1,0,-1};
 
 int arr[52][52];
@@ -30,6 +30,7 @@ void func() {
         } else {
             d = (d+2) % 4;
         }
+        //cout << y << ' ' << x << ' ' << d << ' ' << t << '\n';
     }
 }
 
