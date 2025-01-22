@@ -13,8 +13,8 @@ int main() {
     int x1 = 0, y1 = 0, x2 = m + 1, y2 = n + 1;
 
     while (num <= n * m) {
-        if(text == 'Z') {
-            text = 'A' + 1;
+        if(text == 'Z'+1) {
+            text = 'A';
         }
         a[y][x] = text++;
         num++;
